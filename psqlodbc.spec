@@ -12,7 +12,7 @@ Version:	7.2.5
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.us.postgresql.org/odbc/versions/src/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.postgresql.org/pub/odbc/versions/src/%{name}-%{version}.tar.gz
 # Source0-md5:	701c7c55831652d35937c2efaeaab26d
 URL:		http://gborg.postgresql.org/project/psqlodbc/projdisplay.php
 %{?with_iodbc:BuildRequires:	libiodbc-devel}
