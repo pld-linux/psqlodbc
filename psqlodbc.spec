@@ -9,16 +9,18 @@ Summary(pt_BR):	Driver ODBC necess醨io para acessar um servidor PostgreSQL
 Summary(zh_CN):	用 ODBC 访问 一个 PostgreSQL 数据库的 ODBC 驱动
 Name:		psqlodbc
 Version:	7.2.5
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.postgresql.org/pub/odbc/versions/src/%{name}-%{version}.tar.gz
 # Source0-md5:	701c7c55831652d35937c2efaeaab26d
 URL:		http://gborg.postgresql.org/project/psqlodbc/projdisplay.php
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 %{?with_iodbc:BuildRequires:	libiodbc-devel}
+BuildRequires:	libtool
 BuildRequires:	postgresql-devel
-%{?!with_iodbc:BuildRequires:	unixODBC-devel}
+%{!?with_iodbc:BuildRequires:	unixODBC-devel}
 %{?with_iodbc:Requires:	libiodbc}
 Obsoletes:	postgresql-odbc
 Obsoletes:	postgresql-odbc-devel
@@ -44,8 +46,16 @@ Driver ODBC necess醨io para acessar um servidor PostgreSQL.
 %prep
 %setup -q
 
+# PGAC_* macros
+tail -n +874 aclocal.m4 | head -n 136 > acinclude.m4
+tail -n +4631 aclocal.m4 >> acinclude.m4
+
 %build
-cp -f /usr/share/automake/config.* .
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	%{?with_iodbc:--with-iodbc} \
 	%{!?with_iodbc:--with-unixodbc}
@@ -67,6 +77,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.unix notice.txt
-%attr(755,root,root) %{_libdir}/*.so
-%{_libdir}/*.la
+%attr(755,root,root) %{_libdir}/psqlodbc.so
+%{_libdir}/psqlodbc.la
 %{_datadir}/%{name}
