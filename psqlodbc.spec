@@ -15,6 +15,7 @@ Group:		Libraries
 Source0:	ftp://ftp.postgresql.org/pub/odbc/versions/src/%{name}-%{version}.tar.gz
 # Source0-md5:	701c7c55831652d35937c2efaeaab26d
 URL:		http://gborg.postgresql.org/project/psqlodbc/projdisplay.php
+BuildRequires:	automake
 %{?with_iodbc:BuildRequires:	libiodbc-devel}
 BuildRequires:	postgresql-devel
 %{?!with_iodbc:BuildRequires:	unixODBC-devel}
@@ -44,6 +45,7 @@ Driver ODBC necessário para acessar um servidor PostgreSQL.
 %setup -q
 
 %build
+cp -f /usr/share/automake/config.* .
 %configure \
 	%{?with_iodbc:--with-iodbc} \
 	%{!?with_iodbc:--with-unixodbc}
