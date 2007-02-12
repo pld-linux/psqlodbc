@@ -3,10 +3,10 @@
 %bcond_with	iodbc	# use iodbc instead of unix-odbc
 #
 Summary:	ODBC interface to PostgreSQL
-Summary(es):	Driver ODBC para acceder un servidor PostgreSQL
-Summary(pl):	Interfejs ODBC do PostgreSQL
-Summary(pt_BR):	Driver ODBC necess·rio para acessar um servidor PostgreSQL
-Summary(zh_CN):	”√ ODBC ∑√Œ  “ª∏ˆ PostgreSQL  ˝æ›ø‚µƒ ODBC «˝∂Ø
+Summary(es.UTF-8):   Driver ODBC para acceder un servidor PostgreSQL
+Summary(pl.UTF-8):   Interfejs ODBC do PostgreSQL
+Summary(pt_BR.UTF-8):   Driver ODBC necess√°rio para acessar um servidor PostgreSQL
+Summary(zh_CN.UTF-8):   Áî® ODBC ËÆøÈóÆ ‰∏Ä‰∏™ PostgreSQL Êï∞ÊçÆÂ∫ìÁöÑ ODBC È©±Âä®
 Name:		psqlodbc
 Version:	7.2.5
 Release:	2
@@ -31,16 +31,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This package includes library for interface ODBC.
 %{?with_iodbc:This rpm uses libiODBC.}
 
-%description -l es
-Driver para acceder un servidor PostgreSQL, a travÈs de ODBC.
+%description -l es.UTF-8
+Driver para acceder un servidor PostgreSQL, a trav√©s de ODBC.
 %{?with_iodbc:This rpm uses libiODBC.}
 
-%description -l pl
+%description -l pl.UTF-8
 Pakiet ten zawiera biblioteki dla interfejsu ODBC.
-%{?with_iodbc:Ten pakiet rpm uøywa libiODBC.}
+%{?with_iodbc:Ten pakiet rpm u≈ºywa libiODBC.}
 
-%description -l pt_BR
-Driver ODBC necess·rio para acessar um servidor PostgreSQL.
+%description -l pt_BR.UTF-8
+Driver ODBC necess√°rio para acessar um servidor PostgreSQL.
 %{?with_iodbc:This rpm uses libiODBC.}
 
 %prep
