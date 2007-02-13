@@ -3,10 +3,10 @@
 %bcond_with	iodbc	# use iodbc instead of unix-odbc
 #
 Summary:	ODBC interface to PostgreSQL
-Summary(es.UTF-8):   Driver ODBC para acceder un servidor PostgreSQL
-Summary(pl.UTF-8):   Interfejs ODBC do PostgreSQL
-Summary(pt_BR.UTF-8):   Driver ODBC necessário para acessar um servidor PostgreSQL
-Summary(zh_CN.UTF-8):   用 ODBC 访问 一个 PostgreSQL 数据库的 ODBC 驱动
+Summary(es.UTF-8):	Driver ODBC para acceder un servidor PostgreSQL
+Summary(pl.UTF-8):	Interfejs ODBC do PostgreSQL
+Summary(pt_BR.UTF-8):	Driver ODBC necessário para acessar um servidor PostgreSQL
+Summary(zh_CN.UTF-8):	用 ODBC 访问 一个 PostgreSQL 数据库的 ODBC 驱动
 Name:		psqlodbc
 Version:	7.2.5
 Release:	2
