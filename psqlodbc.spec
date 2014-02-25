@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	iodbc	# use iodbc instead of unix-odbc
+%bcond_with	iodbc		# use iodbc instead of unix-odbc
 #
 Summary:	ODBC interface to PostgreSQL
 Summary(es.UTF-8):	Driver ODBC para acceder un servidor PostgreSQL
@@ -8,17 +8,18 @@ Summary(pl.UTF-8):	Interfejs ODBC do PostgreSQL
 Summary(pt_BR.UTF-8):	Driver ODBC necessário para acessar um servidor PostgreSQL
 Summary(zh_CN.UTF-8):	用 ODBC 访问 一个 PostgreSQL 数据库的 ODBC 驱动
 Name:		psqlodbc
-Version:	09.01.0100
-Release:	2
-License:	LGPL
+Version:	09.03.0200
+Release:	1
+License:	LGPL v2+
 Group:		Libraries
 Source0:	ftp://ftp.postgresql.org/pub/odbc/versions/src/%{name}-%{version}.tar.gz
-# Source0-md5:	08121d9d57bb2dbab11c36c2cc8e8edb
-URL:		http://psqlodbc.projects.postgresql.org/
-BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake
+# Source0-md5:	6565c9d291f825fdf75168fb41908f27
+URL:		http://psqlodbc.projects.pgfoundry.org/
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1:1.8
 %{?with_iodbc:BuildRequires:	libiodbc-devel}
 BuildRequires:	libtool
+BuildRequires:	openssl-devel
 BuildRequires:	postgresql-devel
 %{!?with_iodbc:BuildRequires:	unixODBC-devel}
 %{?with_iodbc:Requires:	libiodbc}
@@ -47,6 +48,8 @@ Driver ODBC necessário para acessar um servidor PostgreSQL.
 %setup -q
 
 %build
+# Note: --enable-gss and --enable-krb5 require private symbols from libpq;
+# GSS and KRB5 auth are available anyway through libpq mechanisms
 %{__libtoolize}
 %{__aclocal} -I config
 %{__autoconf}
@@ -64,6 +67,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/psqlodbcw.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -74,4 +79,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc readme.txt docs/*
 %attr(755,root,root) %{_libdir}/psqlodbcw.so
-%{_libdir}/psqlodbcw.la
