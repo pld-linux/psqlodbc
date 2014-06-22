@@ -8,12 +8,12 @@ Summary(pl.UTF-8):	Interfejs ODBC do PostgreSQL
 Summary(pt_BR.UTF-8):	Driver ODBC necessário para acessar um servidor PostgreSQL
 Summary(zh_CN.UTF-8):	用 ODBC 访问 一个 PostgreSQL 数据库的 ODBC 驱动
 Name:		psqlodbc
-Version:	09.03.0210
+Version:	09.03.0300
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	ftp://ftp.postgresql.org/pub/odbc/versions/src/%{name}-%{version}.tar.gz
-# Source0-md5:	108bc27c0cfd5cbc5c5f9bd7bb4f7739
+# Source0-md5:	3426173781606386856fcbda128b6c89
 URL:		http://psqlodbc.projects.pgfoundry.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.8
